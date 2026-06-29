@@ -11,6 +11,7 @@ React, Vite, React Router, TanStack Query, Axios, Tailwind CSS
 3. `npm run dev`
 
 ## API discrepancies found
+- The docs describe a single `image` field on products, but the live API returns `images` (an array). Using `images[0]` in `ProductCard` and `ProductDetailPage`.
 - (e.g.) The docs describe `GET /products?categoryId=`, but the live API
   actually expects `?category=`. Adjusted in `src/api/products.js`.
 

@@ -2,7 +2,7 @@ import apiClient from './client'
 
 export async function fetchOrders() {
   const { data } = await apiClient.get('/orders')
-  return data
+  return Array.isArray(data) ? data : (data?.data ?? [])
 }
 
 export async function fetchOrder(id) {

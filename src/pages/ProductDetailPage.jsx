@@ -26,7 +26,12 @@ export default function ProductDetailPage() {
 
   return (
     <div className="grid gap-8 sm:grid-cols-2">
-      <img src={product.image} alt={product.title} className="w-full rounded-xl bg-gray-100 object-cover" />
+      <img
+        src={product.images?.[0]}
+        alt={product.title}
+        onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x600?text=No+Image' }}
+        className="w-full rounded-xl bg-gray-100 object-cover"
+      />
       <div>
         <h1 className="text-2xl font-bold text-gray-900">{product.title}</h1>
         <p className="mt-2 text-xl font-semibold text-brand-700">${product.price?.toFixed(2)}</p>

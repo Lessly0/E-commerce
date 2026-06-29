@@ -23,7 +23,53 @@ export default function ProductListPage() {
 
   return (
     <div>
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end">
+      {/* Hero */}
+      <section className="-mx-4 mb-10 relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-500 px-4 py-24 text-center text-white">
+        {/* decorative blobs */}
+        <div className="pointer-events-none absolute -top-16 -left-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 rounded-full bg-indigo-400/20 blur-3xl" />
+        <div className="pointer-events-none absolute top-8 right-24 h-32 w-32 rounded-full bg-brand-400/20 blur-2xl" />
+
+        <div className="relative">
+          <span className="inline-block rounded-full bg-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm">
+            New arrivals every week
+          </span>
+          <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+            Shop everything,
+            <br />
+            <span className="text-brand-100">simply.</span>
+          </h1>
+          <p className="mx-auto mt-4 max-w-md text-base text-white/80 sm:text-lg">
+            Browse our latest collection and find something you'll love — fast shipping, easy returns.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="#products"
+              className="rounded-lg bg-white px-8 py-3 text-sm font-semibold text-brand-700 shadow-lg hover:bg-brand-50 transition-colors"
+            >
+              Shop now
+            </a>
+            <a
+              href="#products"
+              className="rounded-lg border border-white/40 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/10 transition-colors"
+            >
+              View deals
+            </a>
+          </div>
+
+          {/* stats strip */}
+          <div className="mt-12 flex justify-center gap-10 text-center">
+            {[['500+', 'Products'], ['Free', 'Shipping'], ['24/7', 'Support']].map(([stat, label]) => (
+              <div key={label}>
+                <p className="text-2xl font-bold">{stat}</p>
+                <p className="text-xs text-white/70 uppercase tracking-wider">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div id="products" className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end">
         <div className="flex-1">
           <Input
             id="search"

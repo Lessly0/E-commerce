@@ -6,8 +6,9 @@ export default function ProductCard({ product }) {
     <Link to={`/products/${product.id}`}>
       <Card className="flex h-full flex-col gap-2 transition-shadow hover:shadow-md">
         <img
-          src={product.image}
+          src={product.images?.[0]}
           alt={product.title}
+          onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x400?text=No+Image' }}
           className="aspect-square w-full rounded-lg object-cover bg-gray-100"
         />
         <h3 className="line-clamp-2 text-sm font-medium text-gray-900">{product.title}</h3>
