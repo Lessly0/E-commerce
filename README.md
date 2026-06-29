@@ -1,16 +1,33 @@
-# React + Vite
+# E-Comus Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React + TanStack Query e-commerce frontend built against the E-Comus API.
 
-Currently, two official plugins are available:
+## Tech stack
+React, Vite, React Router, TanStack Query, Axios, Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Setup
+1. `npm install`
+2. Copy `.env.example` to `.env` and set `VITE_API_BASE_URL`
+3. `npm run dev`
 
-## React Compiler
+## API discrepancies found
+- (e.g.) The docs describe `GET /products?categoryId=`, but the live API
+  actually expects `?category=`. Adjusted in `src/api/products.js`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Architecture
+- `src/api/` — one Axios instance + one file per resource
+- `src/features/` — TanStack Query hooks grouped by resource
+- `src/pages/` — route-level components
+- `src/components/ui/` — shared design system
 
-## Expanding the Oxlint configuration
+## State management decisions
+- **Server state** (products, cart, orders) lives exclusively in the TanStack Query cache — never copied into `useState`
+- **UI state** (search input, filters, pagination, form fields) lives in local `useState`
+- **Toast visibility** lives in Context — it's pure UI state that didn't come from the server
+- **Cart ID** is persisted to `localStorage` — it identifies which server resource belongs to this browser session, not the cart data itself
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Screenshots
+[add screenshots here]
+
+## Live deployment
+[add Vercel/Netlify link here]
