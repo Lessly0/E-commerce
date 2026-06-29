@@ -47,6 +47,7 @@ export default function CartPage() {
               type="number"
               min={1}
               value={item.quantity}
+              aria-label={`Quantity for ${item.title}`}
               onChange={(e) =>
                 updateItem.mutate({ itemId: item.id, quantity: Number(e.target.value) })
               }

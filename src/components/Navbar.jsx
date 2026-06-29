@@ -16,7 +16,10 @@ export default function Navbar() {
           <Link to="/cart" className="relative hover:text-brand-700">
             Cart
             {itemCount > 0 && (
-              <span className="absolute -right-3 -top-2 rounded-full bg-brand-600 px-1.5 text-xs text-white">
+              <span
+                aria-label={`${itemCount} items in cart`}
+                className="absolute -right-3 -top-2 rounded-full bg-brand-600 px-1.5 text-xs text-white"
+              >
                 {itemCount}
               </span>
             )}
